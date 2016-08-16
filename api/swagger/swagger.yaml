@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  description: >-
+  description:
     This is a test api that runs with swagger.
     The idea is to build an operational API with all things a developer need
   version: "0.0.1"
