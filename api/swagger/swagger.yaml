@@ -1,19 +1,42 @@
 swagger: "2.0"
 info:
-  description:
+  title: BASEAPI APP
+  version: "1.0.0"
+  description: |
     This is a test api that runs with swagger.
     The idea is to build an operational API with all things a developer need
-  version: "0.0.1"
-  title: BASEAPI APP
+    This file uses almost every single aspect of the [Open API Specification](https://openapis.org/).  
+    This API will use JSON.  
+    JSON looks like this:  
+    
+    ```JSON
+    {
+      "key": "value",
+      "anotherKey": "anotherValue"
+    }
+    ```    
+  termsOfService: http://www.ariadnasw.com/aviso-legal/
+  contact:
+    name: Rafael García
+    email: rafa@myariadna.com
+  license:
+    name: CC BY-NC 4.0
+    url: https://creativecommons.org/licenses/by-nc/4.0/    
+tags:
+  - name: User groups
+    description: User groups functions related
+  - name: User
+    description: User functions related
+  - name: Utilities
+    description: Some utilies for testers
 # during dev, should point to your local machine
 host: localhost:10010
 # basePath prefixes all resource paths 
 basePath: /
 # 
 schemes:
-  # tip: remove http to make production-grade
+  # TODO: We have to implement https protocol
   - http
-  - https
 # format of bodies a client can send (Content-Type)
 consumes:
   - application/json
@@ -21,19 +44,17 @@ consumes:
 produces:
   - application/json
 paths:
-  /hello:
+  /echo:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
     get:
-      description: Returns 'Hello' to the caller
+      tags:
+        - Utilities
+      description: Returns the string passed in parameters
       # used as the method name of the controller
       operationId: hello
       parameters:
-        - name: name
-          in: query
-          description: The name of the person to whom to say hello
-          required: false
-          type: string
+        - $ref: "#/parameters/echoString"
       responses:
         "200":
           description: Success
@@ -61,3 +82,11 @@ definitions:
     properties:
       message:
         type: string
+parameters:
+  echoString:
+    name: echoString
+    in: query
+    description: The name of the person to whom to say hello
+    required: false
+    type: string
+    
