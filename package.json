@@ -1,6 +1,6 @@
 {
   "name": "baseapi",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "description": "New Swagger API Project",
   "keywords": [],
@@ -8,6 +8,7 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "asw_basepkg": "^1.0.0",
     "express": "^4.12.3",
     "swagger-express-mw": "^0.1.0"
   },
